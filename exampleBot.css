@@ -1,0 +1,22 @@
+/*
+* DisCSS - Example Bot
+*/
+require {
+  file: "lib/apiClass.css";
+}
+
+$token: "[Put your token here.]";
+
+.init{};
+
+.on-event.messagerecieved {
+  .if .user.isBot #false {
+    .if .message-contents.equals: "!test" {
+      .discss.send-message {
+        guild: .event.guild;
+        channel: .event.channel;
+        message-contents: .user.getMention + ", this is a test command.";
+      }
+    }
+  }
+}
