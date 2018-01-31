@@ -1,0 +1,45 @@
+/*
+* DisCSS
+* The only way to make Discord bots in CSS.
+*/
+.api {
+  discord-api-version: 6;
+  discord-token: $token;
+  discord-url: "https://discordapp.com/api/{discord-api-version}/";
+}
+
+.api.eventlisten {
+  .on-event {
+    .if .ismessagerecieved {
+      type: messagerecieved;
+      user: $event-user;
+      channel: $event-channel;
+      guild: $event-guild;
+      member: $event-member;
+      message-contents: $event-contents;
+      message-id: $event-id;
+    }
+    .if .ismessageremoved {
+      type: messagedeleted;
+      user: $event-user;
+      channel: $event-channel;
+      guild: $event-guild;
+      member: $event-member;
+      message-id: $event-id;
+    }
+  }
+}
+
+.api.action {
+  .send-message {
+    guild: $guild;
+    channel: $channel;
+    message-contents: $message;
+  }
+}
+
+/* Start the library */
+.init {
+  require-dependencies: DiscordAPI, CSSrun;
+  run: api;
+}
