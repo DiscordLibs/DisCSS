@@ -42,4 +42,5 @@
 .init {
   require-dependencies: DiscordAPI, CSSrun;
   run: api;
+  .discss: $api;
 }
